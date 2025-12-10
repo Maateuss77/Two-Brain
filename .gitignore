@@ -55,7 +55,7 @@ build/
 # Pycache
 __pycache__/
 *.pyc
-*.egg-info/
+two_brain.egg-info/
 .pytest_cache/
 
 # Rust

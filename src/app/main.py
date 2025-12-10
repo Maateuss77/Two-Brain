@@ -9,9 +9,6 @@ async def read_root():
     return {"Hello": "World"}
 
 
-
-
-
 def run():
     uvicorn.run(
         "app.main:app",
