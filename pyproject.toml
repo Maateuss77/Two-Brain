@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "two-brain"
+version = "0.1.0"
+description = "Secondary brain focused on learning and knowledge connections"
+readme="README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastapi",
+    "aiosqlite",
+    "sqlalchemy",
+    "python-jose[cryptography]",
+    "uvicorn",
+    "passlib[bcrypt]"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff"
+]
