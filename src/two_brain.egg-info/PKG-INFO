@@ -1,0 +1,25 @@
+Metadata-Version: 2.4
+Name: two-brain
+Version: 0.1.0
+Summary: Secondary brain focused on learning and knowledge connections
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi
+Requires-Dist: aiosqlite
+Requires-Dist: sqlalchemy
+Requires-Dist: python-jose[cryptography]
+Requires-Dist: uvicorn
+Requires-Dist: passlib[bcrypt]
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+
+# Breve apresentação
+
+Um site que simplesmente conecta seus pensamentos! Perfeito para aprender algo novo ou revisão.
+
+# Stack
+- fastapi
+- sqlalchemy
+- sqlite
+

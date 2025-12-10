@@ -62,3 +62,6 @@ Cargo.lock
 
 # Go
 bin/
+
+# Data base 
+*.db
