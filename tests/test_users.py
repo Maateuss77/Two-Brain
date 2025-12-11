@@ -1,7 +1,7 @@
 from app.db.model.userModel import User
 
 def test_create_note(db_session):
-    user = User(name="Nome", username="mateusu", email="test@test.com", picture="fotopeixe.png")
+    user = User(name="Nome", username="mateusu", email="test@test.com", password_hash="bucetarosa")
 
     db_session.add(user)
     db_session.commit()

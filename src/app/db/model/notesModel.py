@@ -12,7 +12,6 @@ class Note(Base):
 
 class Notelink(Base):
     __tablename__ = "notes_links"
-
     id = mapped_column(Integer, primary_key=True)
     from_note_id = mapped_column(ForeignKey("notes.id"))
     to_note_id = mapped_column(ForeignKey("notes.id"))

@@ -9,4 +9,5 @@ class User(Base):
     name: Mapped[str] = mapped_column(nullable=False)
     username: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
     email: Mapped[str] = mapped_column(unique=True, nullable=False)
-    picture: Mapped[str] = mapped_column(unique=False)
+    password_hash: Mapped[str] = mapped_column(String(255),nullable=False)
+    picture: Mapped[str] = mapped_column(nullable=True)

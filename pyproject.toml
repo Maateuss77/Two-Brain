@@ -13,8 +13,8 @@ dependencies = [
     "fastapi",
     "aiosqlite",
     "sqlalchemy",
-    "python-jose[cryptography]",
     "uvicorn",
+    "python-jose[cryptography]",
     "passlib[bcrypt]"
 ]
 
