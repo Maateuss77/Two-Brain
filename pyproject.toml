@@ -14,8 +14,7 @@ dependencies = [
     "aiosqlite",
     "sqlalchemy",
     "uvicorn",
-    "python-jose[cryptography]",
-    "passlib[Argon2]"
+    "pwdlib[argon2]"
 ]
 
 [project.optional-dependencies]

@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 import uvicorn
+from app.routes.user_routes import auth_routes
 
-app = FastAPI()
 
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+
+app = FastAPI(title="Two brain api")
+app.include_router(auth_routes)
 
 
 def run():

@@ -8,8 +8,7 @@ Requires-Dist: fastapi
 Requires-Dist: aiosqlite
 Requires-Dist: sqlalchemy
 Requires-Dist: uvicorn
-Requires-Dist: python-jose[cryptography]
-Requires-Dist: passlib[Argon2]
+Requires-Dist: pwdlib[argon2]
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: ruff; extra == "dev"
