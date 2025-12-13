@@ -7,9 +7,9 @@ Description-Content-Type: text/markdown
 Requires-Dist: fastapi
 Requires-Dist: aiosqlite
 Requires-Dist: sqlalchemy
-Requires-Dist: python-jose[cryptography]
 Requires-Dist: uvicorn
-Requires-Dist: passlib[bcrypt]
+Requires-Dist: python-jose[cryptography]
+Requires-Dist: passlib[Argon2]
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: ruff; extra == "dev"
@@ -23,7 +23,14 @@ Um site que simplesmente conecta seus pensamentos! Perfeito para aprender algo n
 - sqlalchemy
 - sqlite
 
-# Iniciar servidor
+# Comandos para teste
 
 Utilize o comando para iniciar o servidor:
-``serv``
+```bash
+serv
+```
+
+use pytest para fazer os testes do  projeto.
+```bash
+pytest
+```

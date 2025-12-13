@@ -7,7 +7,14 @@ Um site que simplesmente conecta seus pensamentos! Perfeito para aprender algo n
 - sqlalchemy
 - sqlite
 
-# Iniciar servidor
+# Comandos para teste
 
 Utilize o comando para iniciar o servidor:
-``serv``
+```bash
+serv
+```
+
+use pytest para fazer os testes do  projeto.
+```bash
+pytest
+```

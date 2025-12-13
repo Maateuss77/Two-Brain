@@ -15,7 +15,7 @@ dependencies = [
     "sqlalchemy",
     "uvicorn",
     "python-jose[cryptography]",
-    "passlib[bcrypt]"
+    "passlib[Argon2]"
 ]
 
 [project.optional-dependencies]
