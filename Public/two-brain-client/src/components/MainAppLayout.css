@@ -1,0 +1,311 @@
+/* MainAppLayout.css */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #2e2e2e;
+  color: #c9d1d9;
+  overflow: hidden; /* Evita scroll na body principal */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+.app-header-main {
+  background-color: #1e1e1e;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.app-title {
+  color: #6a9955;
+  margin: 0;
+  font-size: 28px;
+}
+
+.search-bar {
+  flex-grow: 1; /* Ocupa espaço central */
+  margin: 0 30px;
+  display: flex;
+  max-width: 500px;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid #3e3e3e;
+  border-radius: 4px 0 0 4px;
+  background-color: #282828;
+  color: #c9d1d9;
+}
+
+.search-bar button {
+  background-color: #7aa2f7;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.search-bar button:hover {
+  background-color: #6b8fd4;
+}
+
+.main-nav button {
+  background-color: #3e3e3e;
+  color: #c9d1d9;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.main-nav button:hover {
+  background-color: #4e4e4e;
+}
+.logout-btn {
+  background-color: #e06c75 !important;
+}
+.logout-btn:hover {
+  background-color: #c75a63 !important;
+}
+
+/* Main Layout - Flex container for sidebars and content */
+.main-layout {
+  display: flex;
+  flex-grow: 1; /* Ocupa o resto da altura disponível */
+  margin-top: 10px; /* Pequena margem abaixo do header */
+}
+
+/* Sidebars */
+.sidebar {
+  background-color: #1e1e1e;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  overflow-y: auto; /* Para notas / tags longas */
+}
+
+.left-sidebar {
+  width: 250px;
+  min-width: 200px;
+  border-right: 1px solid #3e3e3e;
+}
+
+.left-sidebar h3, .right-sidebar h3 {
+  color: #7aa2f7;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.note-list li {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.note-list li:hover {
+  background-color: #3e3e3e;
+}
+
+.note-list li.active {
+  background-color: #5b8748; /* Cor de destaque para nota selecionada */
+  color: white;
+  font-weight: bold;
+}
+
+.tags-section {
+  margin-top: 20px;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: #3e3e3e;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  color: #9cdcfe; /* Cor para tags */
+}
+
+.right-sidebar {
+  width: 300px;
+  min-width: 250px;
+  border-left: 1px solid #3e3e3e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Content Area - Editor */
+.content-area {
+  flex-grow: 1; /* Ocupa todo o espaço restante horizontalmente */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-editor {
+  flex-grow: 1;
+  background-color: #282828;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.note-editor h2 {
+  color: #6a9955;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.markdown-editor {
+  flex-grow: 1; /* Ocupa o espaço disponível */
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #3e3e3e;
+  border-radius: 4px;
+  background-color: #1e1e1e;
+  color: #c9d1d9;
+  font-size: 1.1em;
+  line-height: 1.6;
+  resize: none; /* Desativa redimensionamento manual */
+  box-sizing: border-box;
+}
+
+.markdown-editor:focus {
+  outline: none;
+  border-color: #7aa2f7;
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: flex-end; /* Alinha botões à direita */
+}
+
+.editor-toolbar button {
+  background-color: #3e3e3e;
+  color: #c9d1d9;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.editor-toolbar button:hover {
+  background-color: #4e4e4e;
+}
+
+.empty-state {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #282828;
+  border-radius: 8px;
+  border: 2px dashed #3e3e3e;
+  padding: 30px;
+}
+
+.empty-state h3 {
+  color: #7aa2f7;
+  margin-bottom: 20px;
+}
+
+.empty-state button {
+  background-color: #6a9955;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.empty-state button:hover {
+  background-color: #5b8748;
+}
+
+/* Graph Preview Placeholder */
+.graph-preview-placeholder {
+  flex-grow: 1;
+  width: 100%;
+  background-color: #282828;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.graph-preview-placeholder p {
+  position: absolute;
+  top: 10px;
+  color: #999;
+  font-size: 0.9em;
+}
+
+.graph-node {
+  background-color: #7aa2f7; /* Cor para nós do grafo */
+  color: #1e1e1e;
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 0.9em;
+  white-space: nowrap; /* Evita quebra de linha */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.main-node {
+  background-color: #6a9955;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.graph-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.full-graph-button {
+  background-color: #7aa2f7 !important;
+  color: white !important;
+  margin-top: 15px;
+}
+.full-graph-button:hover {
+  background-color: #6b8fd4 !important;
+}

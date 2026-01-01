@@ -1,7 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import app.database.model
+from app.database.base import Base
 
 DATABASE_URL = "sqlite:///database.db"
-
 db = create_engine(DATABASE_URL, echo=True)
 Session  = sessionmaker(bind=db)
+Base.metadata.create_all(bind=db)

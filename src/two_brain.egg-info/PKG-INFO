@@ -19,17 +19,11 @@ Um site que simplesmente conecta seus pensamentos! Perfeito para aprender algo n
 
 # Stack
 - fastapi
-- sqlalchemy
+- sqlalchemy 2.0
 - sqlite
+- pwdlib[argon]
 
-# Comandos para teste
+## Organização
+O projeto segue uma organição simples. Você encontrar tudo que precisa sobre banco de dados na pasta "Database", as rotas são em "routes". Na pasta "security", vc encontrar os modelos para token e hash de senhas.
 
-Utilize o comando para iniciar o servidor:
-```bash
-serv
-```
-
-use pytest para fazer os testes do  projeto.
-```bash
-pytest
-```
+Pensando na segurança tenho 2 schemas para os usuarios, onde toda requisição para ver o usuario não mostrará a sua senha em hipotese alguma.1

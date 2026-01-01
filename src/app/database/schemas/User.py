@@ -13,7 +13,6 @@ class UserRead(BaseModel):
     id: int
     name: str
     username: str
-    avatar_url: Optional[str]
 
     class Config:
         from_attributes = True

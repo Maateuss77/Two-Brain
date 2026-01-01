@@ -1,9 +1,10 @@
-from typing import List
-from typing import Optional
+from typing import TYPE_CHECKING
 from sqlalchemy import String, ForeignKey, CheckConstraint, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.base import Base
-from app.database.model.userModel import User
+
+if TYPE_CHECKING:
+    from .User import User
 
 class Note(Base):
     __tablename__ = "notes"
@@ -11,9 +12,8 @@ class Note(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String)
     content: Mapped[str] = mapped_column(String)
-
     owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    owner: Mapped["User"] = relationship(back_populates="notes")
+    owner: Mapped["User"] = relationship("User",back_populates="notes")
 
 class NoteLink(Base):
     __tablename__ = "notes_links"
