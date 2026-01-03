@@ -1,12 +1,13 @@
 from datetime import timedelta
-from math import exp
 from fastapi import APIRouter, Depends, HTTPException
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from sqlalchemy.orm.session import Session
 from app.database.schemas.User import UserCreate
 from app.routes.dependecies import session_db
 from app.database.model.User import User
 from app.security.security import pwd_hash, verify_hash, create_acess_token
+from jose import JWTError, jwt
+from app.config import SECRET_KEY, ALGORITHM
 
 auth_routes = APIRouter(prefix="/Auth")
 
@@ -42,4 +43,32 @@ async def login(
     return {
         "access_token": acess_token,
         "token_type": "bearer"
+    }
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/Auth/login")
+
+async def get_current_user(token: str = Depends(oauth2_scheme), session: Session=Depends(session_db)):
+    credentials_exception = HTTPException(
+        status_code=401,
+        detail="Invalid authentication credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        subject: str | None = payload.get("sub")
+        if subject is None:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception
+
+    user = session.query(User).filter(User.id ==int(subject)).first()
+    if user is None:
+        raise credentials_exception
+    return user
+
+@auth_routes.get("/me", tags=["User"])
+def protected(user: str = Depends(get_current_user)):
+    return {
+        "user": user
     }
