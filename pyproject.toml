@@ -14,7 +14,9 @@ dependencies = [
     "aiosqlite",
     "sqlalchemy",
     "uvicorn",
-    "pwdlib[argon2]"
+    "pwdlib[argon2]",
+    "python-jose>=3.5.0",
+    "python-dotenv>=1.2.1",
 ]
 
 [project.optional-dependencies]

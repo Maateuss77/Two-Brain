@@ -9,6 +9,8 @@ Requires-Dist: aiosqlite
 Requires-Dist: sqlalchemy
 Requires-Dist: uvicorn
 Requires-Dist: pwdlib[argon2]
+Requires-Dist: python-jose>=3.5.0
+Requires-Dist: python-dotenv>=1.2.1
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: ruff; extra == "dev"
