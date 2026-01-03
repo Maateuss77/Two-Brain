@@ -13,7 +13,7 @@ def verify_hash(pwd_normal : str, hash : str):
 
 def create_acess_token(subject : str, expire_time: timedelta | None = None):
     now = datetime.now(timezone.utc)
-    expire =   + (expire_time or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    expire = now  + (expire_time or timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     payload = {
         "sub": subject,
         "exp": expire,
