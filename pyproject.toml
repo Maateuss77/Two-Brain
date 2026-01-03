@@ -17,6 +17,7 @@ dependencies = [
     "pwdlib[argon2]",
     "python-jose>=3.5.0",
     "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.21",
 ]
 
 [project.optional-dependencies]
