@@ -47,6 +47,7 @@ build/
 *.tmp
 *.temp
 *.txt
+FrontEnd/
 
 # Backups
 *.bak

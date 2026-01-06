@@ -67,7 +67,7 @@ async def update_note(
 
 @note_route.delete("/{note_id}", tags=["Note"])
 async def delete_note(note_id: int, session: Session = Depends(session_db), user: User = Depends(get_current_user)):
-    note = session.query(Note).filter(Note.id == note_id).first
+    note = session.query(Note).filter(Note.id == note_id).first()
     if not note:
         raise HTTPException(status_code=404, detail="Note not found")
     session.delete(note)
