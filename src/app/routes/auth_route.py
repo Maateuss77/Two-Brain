@@ -1,6 +1,7 @@
 from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+from sqlalchemy.orm import query
 from sqlalchemy.orm.session import Session
 from app.database.schemas.User import UserCreate
 from app.routes.dependecies import session_db
@@ -68,7 +69,18 @@ async def get_current_user(token: str = Depends(oauth2_scheme), session: Session
     return user
 
 @auth_routes.get("/me", tags=["User"])
-def protected(user: str = Depends(get_current_user)):
+async def protected(user: str = Depends(get_current_user)):
     return {
         "user": user
     }
+
+@auth_routes.delete("/{user_id}/delete", tags=["User"])
+async def delete_user(user_id: int,user: User = Depends(get_current_user), session: Session=Depends(session_db)):
+    usuary = session.query(User).filter(User.id == user_id).first()
+    if not usuary:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    session.delete(usuary)
+    session.commit()
+
+    return {"detail": "User deleted successfully"}
