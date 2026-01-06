@@ -28,15 +28,15 @@ class Note(Base):
     )
 
     owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    owner: Mapped["User"] = relationship("User",back_populates="notes")
+    owner: Mapped["User"] = relationship("User",back_populates="notes", cascade="all, delete-orphan")
 
 class NoteLink(Base):
     __tablename__ = "notes_links"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    from_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id"), nullable=False)
-    to_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id"), nullable=False)
-    owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    from_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id"), ondelete="CASCADE", nullable=False)
+    to_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id"), ondelete="CASCADE", nullable=False)
+    owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), ondelete="CASCADE", nullable=False)
 
     __table_args__ = (CheckConstraint("from_note_id != to_note_id"),UniqueConstraint("from_note_id", "to_note_id"))

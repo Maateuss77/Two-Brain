@@ -21,4 +21,4 @@ class User(Base):
         server_default=func.now(), 
         nullable=False
     ) 
-    notes: Mapped[list["Note"]] = relationship("Note",back_populates="owner")
+    notes: Mapped[list["Note"]] = relationship("Note",back_populates="owner", cascade="all, delete-orphan")
