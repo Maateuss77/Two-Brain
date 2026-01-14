@@ -1,5 +1,6 @@
 from typing import TYPE_CHECKING
 from datetime import datetime, timezone
+from uuid import UUID
 from sqlalchemy import Boolean, String, ForeignKey, CheckConstraint, UniqueConstraint, DateTime, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.base import Base
@@ -28,15 +29,15 @@ class Note(Base):
     )
 
     owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    owner: Mapped["User"] = relationship("User",back_populates="notes", cascade="all, delete-orphan")
+    owner: Mapped["User"] = relationship("User",back_populates="notes")
 
 class NoteLink(Base):
     __tablename__ = "notes_links"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-    from_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id"), ondelete="CASCADE", nullable=False)
-    to_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id"), ondelete="CASCADE", nullable=False)
-    owner_id: Mapped[int] = mapped_column(ForeignKey("users.id"), ondelete="CASCADE", nullable=False)
+    from_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id",ondelete="CASCADE"), nullable=False)
+    to_note_id: Mapped[int] = mapped_column(ForeignKey("notes.id",ondelete="CASCADE"), nullable=False)
+    owner_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     __table_args__ = (CheckConstraint("from_note_id != to_note_id"),UniqueConstraint("from_note_id", "to_note_id"))
