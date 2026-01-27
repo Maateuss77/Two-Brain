@@ -1,7 +1,6 @@
 from typing import TYPE_CHECKING
-from datetime import datetime, timezone
-from uuid import UUID
-from sqlalchemy import Boolean, String, ForeignKey, CheckConstraint, UniqueConstraint, DateTime, func
+from datetime import datetime
+from sqlalchemy import TEXT, Boolean, String, ForeignKey, CheckConstraint, UniqueConstraint, DateTime, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.base import Base
 
@@ -12,9 +11,9 @@ class Note(Base):
     __tablename__ = "notes"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    title: Mapped[str] = mapped_column(String)
-    content: Mapped[str] = mapped_column(String)
-    delete: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    title: Mapped[str] = mapped_column(String(255))
+    content: Mapped[str] = mapped_column(TEXT)
+    is_delete: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
 
     date_create: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), 

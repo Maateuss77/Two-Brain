@@ -18,6 +18,8 @@ dependencies = [
     "python-jose>=3.5.0",
     "python-dotenv>=1.2.1",
     "python-multipart>=0.0.21",
+    "alembic>=1.18.1",
+    "psycopg[binary]>=3.3.2",
 ]
 
 [project.optional-dependencies]

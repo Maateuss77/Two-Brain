@@ -12,3 +12,10 @@ class NoteLinkOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+class NoteUpdate(BaseModel):
+    title: str | None = None
+    content: str | None = None
+    connections: list[int] | None = None
+    class Config:
+        from_attributes = True
