@@ -20,3 +20,6 @@ def create_acess_token(subject : str, expire_time: timedelta | None = None):
         "iat": now
     }
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+
+def decode_token(token:str):
+    return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])

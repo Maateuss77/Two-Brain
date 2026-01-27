@@ -1,15 +1,12 @@
 from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
-from sqlalchemy.orm import query
 from sqlalchemy.orm.session import Session
 from app.database.schemas.User import UserCreate
 from app.routes.dependecies import session_db
 from app.database.model.User import User
-from app.security.security import pwd_hash, verify_hash, create_acess_token
-from jose import JWTError, jwt
-from app.config import SECRET_KEY, ALGORITHM
-
+from app.security.security import pwd_hash, verify_hash, create_acess_token, decode_token
+from jose import JWTError
 auth_routes = APIRouter(prefix="/Auth")
 
 @auth_routes.post("/create", tags=["User"])
@@ -56,7 +53,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), session: Session
     )
 
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = decode_token(token)
         subject: str | None = payload.get("sub")
         if subject is None:
             raise credentials_exception

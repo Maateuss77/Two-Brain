@@ -22,6 +22,9 @@ app.add_middleware(
     allow_headers=["*"], # Permite todos os headers
 )
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 def run():
     uvicorn.run(
