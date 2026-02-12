@@ -20,6 +20,7 @@ dependencies = [
     "python-multipart>=0.0.21",
     "alembic>=1.18.1",
     "psycopg[binary]>=3.3.2",
+    "psycopg2-binary>=2.9.11",
 ]
 
 [project.optional-dependencies]
